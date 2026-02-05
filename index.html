@@ -49,61 +49,6 @@
    FUNCIONES BASE
 ========================= */
 
-    /* ===============================
-       PASO 1: URLs de los CSV
-    =============================== */
-
-    const CSV_PARTIDOS =
-      "https://raw.githubusercontent.com/globopedia/Artids/main/Artids2000.csv";
-
-    const CSV_ENCUENTROS =
-      "https://raw.githubusercontent.com/globopedia/Artids/main/Encuentros_Huracan.csv";
-
-
-    /* ===============================
-       PASO 2: función genérica CSV
-       (VA ACÁ)
-    =============================== */
-
-    function cargarCSV(url, callback) {
-      Papa.parse(url, {
-        download: true,
-        header: true,
-        complete: function (results) {
-          callback(results.data);
-        }
-      });
-    }
-
-
-    /* ===============================
-       PASO 3: carga encadenada
-       (VA ACÁ)
-    =============================== */
-
-    cargarCSV(CSV_PARTIDOS, function (partidos) {
-      cargarCSV(CSV_ENCUENTROS, function (encuentros) {
-
-        construirRanking(partidos, encuentros);
-
-      });
-    });
-
-
-    /* ===============================
-       PASO 4: función principal
-       (VA ACÁ)
-    =============================== */
-
-    function construirRanking(partidos, encuentros) {
-
-      console.log("Partidos:", partidos.length);
-      console.log("Encuentros:", encuentros.length);
-
-      // acá va tu lógica real de ranking
-      document.getElementById("ranking").innerHTML =
-        `<p>CSV cargados correctamente</p>`;
-    }
     function norm(t) {
   return (t || "")
     .toLowerCase()
