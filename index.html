@@ -174,8 +174,9 @@ let datosEncuentros = null;
 function intentarGenerarRanking() {
   if (!datosPartidos || !datosEncuentros) return;
 
-  // ACÁ ya tenés los dos CSV cargados
-  const ranking = generarRanking(datosEncuentros, datosPartidos);
+  const todosLosPartidos = datosEncuentros.concat(datosPartidos);
+
+  const ranking = generarRanking(todosLosPartidos);
   renderRanking(ranking);
 }
 
